@@ -60,7 +60,7 @@ class AddNewTask : BottomSheetDialogFragment() {
                     newTaskSaveButton.setTextColor(
                         ContextCompat.getColor(
                             requireContext(),
-                            R.color.colorPrimaryDark
+                            R.color.white
                         )
                     )
             }
@@ -75,13 +75,13 @@ class AddNewTask : BottomSheetDialogFragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s.toString() == "") {
                     newTaskSaveButton.isEnabled = false
-                    newTaskSaveButton.setTextColor(Color.GRAY)
+                    newTaskSaveButton.setTextColor(Color.WHITE)
                 } else {
                     newTaskSaveButton.isEnabled = true
                     newTaskSaveButton.setTextColor(
                         ContextCompat.getColor(
                             requireContext(),
-                            R.color.colorPrimaryDark
+                            R.color.white
                         )
                     )
                 }
