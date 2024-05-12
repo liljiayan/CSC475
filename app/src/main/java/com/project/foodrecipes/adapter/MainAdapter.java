@@ -17,10 +17,6 @@ import com.project.foodrecipes.model.ModelMain;
 
 import java.util.List;
 
-/**
- * Created by Achmad Qomarudin on 19-10-2020.
- */
-
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     private List<ModelMain> items;

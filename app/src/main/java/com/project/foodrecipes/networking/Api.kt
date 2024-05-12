@@ -1,9 +1,5 @@
 package com.project.foodrecipes.networking
 
-/**
- * Created by Achmad Qomarudin on 19-10-2020.
- */
-
 object Api {
 
     var Categories      = "https://www.themealdb.com/api/json/v1/1/categories.php"

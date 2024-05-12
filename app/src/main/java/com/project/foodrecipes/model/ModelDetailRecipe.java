@@ -1,9 +1,5 @@
 package com.project.foodrecipes.model;
 
-/**
- * Created by Achmad Qomarudin on 19-10-2020.
- */
-
 public class ModelDetailRecipe {
 
     private String strMeal;

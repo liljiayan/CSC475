@@ -18,10 +18,6 @@ import com.project.foodrecipes.model.ModelFilter;
 
 import java.util.List;
 
-/**
- * Created by Achmad Qomarudin on 19-10-2020.
- */
-
 public class FilterFoodAdapter extends RecyclerView.Adapter<FilterFoodAdapter.ViewHolder> {
 
     private List<ModelFilter> items;
