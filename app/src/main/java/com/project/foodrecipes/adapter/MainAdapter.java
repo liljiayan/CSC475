@@ -48,10 +48,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                 .load(data.strCategoryThumb)
                 .placeholder(R.drawable.ic_food_placeholder)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.imgKategori);
+                .into(holder.imgCategory);
 
-        holder.tvKategori.setText(data.strCategory);
-        holder.cvKategori.setOnClickListener(new View.OnClickListener() {
+        holder.tvCategory.setText(data.strCategory);
+        holder.cvCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onSelectData.onSelected(data);
@@ -67,15 +67,15 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     //Class Holder
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView tvKategori;
-        public CardView cvKategori;
-        public ImageView imgKategori;
+        public TextView tvCategory;
+        public CardView cvCategory;
+        public ImageView imgCategory;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            cvKategori = itemView.findViewById(R.id.cvKategori);
-            tvKategori = itemView.findViewById(R.id.tvKategori);
-            imgKategori = itemView.findViewById(R.id.imgKategori);
+            cvCategory = itemView.findViewById(R.id.cvCategory);
+            tvCategory = itemView.findViewById(R.id.tvCategory);
+            imgCategory = itemView.findViewById(R.id.imgCategory);
         }
     }
 

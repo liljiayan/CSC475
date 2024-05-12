@@ -119,7 +119,7 @@ class FilterFoodActivity : AppCompatActivity(), FilterFoodAdapter.onSelectData {
                             } catch (e: JSONException) {
                                 e.printStackTrace()
                                 Toast.makeText(this@FilterFoodActivity,
-                                        "Gagal menampilkan data!", Toast.LENGTH_SHORT).show()
+                                        "Failed to show data!", Toast.LENGTH_SHORT).show()
                             }
                         }
 

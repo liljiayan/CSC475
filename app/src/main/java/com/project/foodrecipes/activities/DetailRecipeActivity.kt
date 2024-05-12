@@ -143,7 +143,7 @@ class DetailRecipeActivity : AppCompatActivity() {
                             } catch (e: JSONException) {
                                 e.printStackTrace()
                                 Toast.makeText(this@DetailRecipeActivity,
-                                        "Gagal menampilkan data!", Toast.LENGTH_SHORT).show()
+                                        "Failed to get data!", Toast.LENGTH_SHORT).show()
                             }
                         }
 

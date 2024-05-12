@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity(), MainAdapter.onSelectData {
                             } catch (e: JSONException) {
                                 e.printStackTrace()
                                 Toast.makeText(this@MainActivity,
-                                        "Gagal menampilkan data!", Toast.LENGTH_SHORT).show()
+                                        "Failed to show data!", Toast.LENGTH_SHORT).show()
                             }
                         }
 
@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity(), MainAdapter.onSelectData {
 
     private fun openGithub() {
         imgOpenGithub!!.setOnClickListener {
-            val uri = Uri.parse("https://github.com/achmadqomarudin")
+            val uri = Uri.parse("https://github.com/liljiayan")
             startActivity(Intent.createChooser(Intent(Intent.ACTION_VIEW, uri), "Open with"))
         }
     }
