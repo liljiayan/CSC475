@@ -44,8 +44,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3bbd297-12d7-4dc4-92be-58085c12fa61" name="Default Changelist" comment="Merge remote-tracking branch 'origin/FoodRecipes' into FoodRecipes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="f3bbd297-12d7-4dc4-92be-58085c12fa61" name="Default Changelist" comment="commit">
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/release/app-release.aab" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.aab" afterDir="false" />
     </list>
@@ -533,7 +532,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715585587810</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="commit">
+      <option name="closed" value="true" />
+      <created>1715586092155</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1715586092155</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -552,9 +559,9 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Merge remote-tracking branch 'origin/FoodRecipes' into FoodRecipes&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/src/main/java/com.liljiayan/foodrecipes/adapter/MainAdapter.kt&#10;#&#9;app/src/main/java/com.liljiayan/foodrecipes/model/ModelDetailRecipe.kt&#10;#&#9;app/src/test/java/com.liljiayan/foodrecipes/MainAdapterUnitTest.kt" />
     <MESSAGE value="Merge remote-tracking branch 'origin/FoodRecipes' into FoodRecipes&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/src/test/java/com.liljiayan/foodrecipes/MainAdapterUnitTest.kt" />
-    <MESSAGE value="commit" />
     <MESSAGE value="Merge remote-tracking branch 'origin/FoodRecipes' into FoodRecipes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/FoodRecipes' into FoodRecipes" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
