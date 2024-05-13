@@ -8,7 +8,7 @@ android {
     compileSdk 34
 
     defaultConfig {
-        namespace "com.project.foodrecipes"
+        namespace "com.liljiayan.foodrecipes"
         minSdkVersion 23
         targetSdkVersion 34
         versionCode 1

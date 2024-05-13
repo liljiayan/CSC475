@@ -1,4 +1,4 @@
-package com.project.foodrecipes.adapter
+package com.liljiayan.foodrecipes.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.project.foodrecipes.R
-import com.project.foodrecipes.model.ModelFilter
+import com.liljiayan.foodrecipes.R
+import com.liljiayan.foodrecipes.model.ModelFilter
 
 class FilterFoodAdapter(
     private val mContext: Context,

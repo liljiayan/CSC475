@@ -9,10 +9,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.liljiayan.foodrecipes" />
+                  <option name="mobileSdkAppId" value="1:636151091778:android:f3e852f15535cb56a213db" />
+                  <option name="projectId" value="food-recipes-e2135" />
+                  <option name="projectNumber" value="636151091778" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
