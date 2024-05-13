@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Food Recipes</string>
     <string name="quotes"><font color='black'>Make your own food,\nstay at </font><font color='#f18d46'>Home!</font></string>
+    <string name="ingredients">Ingredients:</string>
+    <string name="instructions">Instructions:</string>
+    <string name="todo">TODO</string>
+    <string name="share_recipe">Share Recipe</string>
+    <string name="source">Source</string>
+    <string name="watch_on_youtube">Watch On Youtube</string>
+    <string name="food_list">Food List</string>
+    <string name="categories">Categories</string>
+    <string name="hello_food_lovers">Hello, Food lovers!</string>
 </resources>

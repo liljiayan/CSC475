@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
@@ -77,13 +78,14 @@
                         android:id="@+id/tvYoutube"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_play"
                         android:drawablePadding="10dp"
                         android:gravity="center_vertical"
                         android:padding="10dp"
-                        android:text="Watch On Youtube"
+                        android:text="@string/watch_on_youtube"
                         android:textColor="#ffec2d2d"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:drawableStartCompat="@drawable/ic_play"
+                        tools:ignore="TextContrastCheck" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -99,13 +101,14 @@
                         android:id="@+id/tvShareRecipe"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_share"
                         android:drawablePadding="15dp"
                         android:gravity="center_vertical"
                         android:padding="10dp"
-                        android:text="Share Recipe"
+                        android:text="@string/share_recipe"
                         android:textColor="#A66B08"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:drawableStartCompat="@drawable/ic_share"
+                        tools:ignore="TextContrastCheck" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -121,13 +124,14 @@
                         android:id="@+id/tvSource"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_link"
                         android:drawablePadding="10dp"
                         android:gravity="center_vertical"
                         android:padding="10dp"
-                        android:text="Source"
+                        android:text="@string/source"
                         android:textColor="#ff2a7e2f"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:drawableStartCompat="@drawable/ic_link"
+                        tools:ignore="TextContrastCheck" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -140,7 +144,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="UselessParent">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imgThumb"
@@ -152,7 +157,8 @@
                         android:elevation="5dp"
                         android:src="@drawable/ic_food_placeholder"
                         app:civ_border_color="@android:color/white"
-                        app:civ_border_width="2dp" />
+                        app:civ_border_width="2dp"
+                        tools:ignore="ImageContrastCheck" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
@@ -161,6 +167,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="-110dp"
                         android:layout_marginBottom="50dp"
+                        android:contentDescription="@string/todo"
                         app:cardBackgroundColor="#ffa000"
                         app:cardCornerRadius="5dp"
                         app:cardElevation="5dp"
@@ -170,9 +177,11 @@
                             android:id="@+id/imgFavorite"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:importantForAccessibility="no"
                             android:padding="10dp"
                             android:src="@drawable/ic_favorite"
-                            app:tint="@android:color/white" />
+                            app:tint="@android:color/white"
+                            tools:ignore="ImageContrastCheck" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -189,7 +198,7 @@
                             android:layout_marginTop="50dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="Ingredients:"
+                            android:text="@string/ingredients"
                             android:textColor="@android:color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -198,6 +207,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
+                            android:baselineAligned="false"
                             android:orientation="horizontal">
 
                             <LinearLayout
@@ -242,7 +252,7 @@
                             android:layout_marginTop="20dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="Instructions:"
+                            android:text="@string/instructions"
                             android:textColor="@android:color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />

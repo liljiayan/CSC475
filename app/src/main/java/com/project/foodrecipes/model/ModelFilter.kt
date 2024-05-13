@@ -2,14 +2,10 @@ package com.project.foodrecipes.model
 
 import java.io.Serializable
 
-class ModelFilter : Serializable {
+class ModelFilter (
 
-    var idMeal: String? = null
-
-    @JvmField
-    var strMeal: String? = null
-
-    @JvmField
+    var idMeal: String? = null,
+    var strMeal: String? = null,
     var strMealThumb: String? = null
 
-}
+): Serializable

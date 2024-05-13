@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.project.foodrecipes.activities
 
 import android.app.Activity
@@ -6,6 +8,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
+import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -29,24 +32,22 @@ import org.json.JSONObject
 @Suppress("DEPRECATION")
 class DetailRecipeActivity : AppCompatActivity() {
 
-    var idMeal: String? = null
-    var strMeal: String? = null
-    var modelFilter: ModelFilter? = null
+    private var idMeal: String? = null
+    private var strMeal: String? = null
+    private var modelFilter: ModelFilter? = null
     var progressDialog: ProgressDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_recipe)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (SDK_INT >= Build.VERSION_CODES.M) {
             window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
         }
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
-            window.statusBarColor = Color.TRANSPARENT
-        }
+        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
+        window.statusBarColor = Color.TRANSPARENT
 
         toolbar_detail.title = null
         setSupportActionBar(toolbar_detail)
@@ -87,7 +88,7 @@ class DetailRecipeActivity : AppCompatActivity() {
     }
 
     private val detailRecipe: Unit
-        private get() {
+        get() {
             progressDialog!!.show()
             AndroidNetworking.get(Api.DetailRecipe)
                     .addPathParameter("idMeal", idMeal)
@@ -101,34 +102,34 @@ class DetailRecipeActivity : AppCompatActivity() {
                                 for (i in 0 until playerArray.length()) {
 
                                     val temp = playerArray.getJSONObject(i)
-                                    val dataApi = ModelDetailRecipe()
-                                    val Instructions = temp.getString("strInstructions")
-                                    tvInstructions!!.text = Instructions
+                                    ModelDetailRecipe()
+                                    val instructions = temp.getString("strInstructions")
+                                    tvInstructions!!.text = instructions
 
-                                    val Category = temp.getString("strCategory")
-                                    val Area = temp.getString("strArea")
-                                    tvSubTitle!!.text = "$Category | $Area"
+                                    val category = temp.getString("strCategory")
+                                    val area = temp.getString("strArea")
+                                    "$category | $area".also { tvSubTitle!!.text = it }
 
-                                    val Source = temp.getString("strSource")
-                                    tvSource!!.setOnClickListener { v: View? ->
+                                    val source = temp.getString("strSource")
+                                    tvSource!!.setOnClickListener {
                                         val intentYoutube = Intent(Intent.ACTION_VIEW)
-                                        intentYoutube.data = Uri.parse(Source)
+                                        intentYoutube.data = Uri.parse(source)
                                         startActivity(intentYoutube)
                                     }
 
-                                    val Youtube = temp.getString("strYoutube")
-                                    tvYoutube!!.setOnClickListener { v: View? ->
+                                    val youtube = temp.getString("strYoutube")
+                                    tvYoutube!!.setOnClickListener {
                                         val intentYoutube = Intent(Intent.ACTION_VIEW)
-                                        intentYoutube.data = Uri.parse(Youtube)
+                                        intentYoutube.data = Uri.parse(youtube)
                                         startActivity(intentYoutube)
                                     }
 
-                                    val ShareRecipe = temp.getString("strSource")
+                                    val shareRecipe = temp.getString("strSource")
                                     tvShareRecipe!!.setOnClickListener {
                                         val shareIntent = Intent()
                                         shareIntent.action = Intent.ACTION_SEND
                                         shareIntent.type="text/plain"
-                                        shareIntent.putExtra(Intent.EXTRA_TEXT, ShareRecipe);
+                                        shareIntent.putExtra(Intent.EXTRA_TEXT, shareRecipe)
                                         startActivity(Intent.createChooser(shareIntent, "Share with"))
                                     }
 

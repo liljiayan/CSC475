@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.project.foodrecipes.activities
 
 import android.app.Activity
@@ -29,12 +31,12 @@ import org.json.JSONObject
 import java.util.*
 
 @Suppress("DEPRECATION")
-class MainActivity : AppCompatActivity(), MainAdapter.onSelectData {
+class MainActivity : AppCompatActivity(), MainAdapter.OnSelectData {
 
-    var mainAdapter: MainAdapter? = null
+    private var mainAdapter: MainAdapter? = null
     var progressDialog: ProgressDialog? = null
     var modelMain: MutableList<ModelMain> = ArrayList()
-    lateinit var searchView: SearchView
+    private lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,10 +47,8 @@ class MainActivity : AppCompatActivity(), MainAdapter.onSelectData {
                     or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
         }
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
-            window.statusBarColor = Color.TRANSPARENT
-        }
+        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
+        window.statusBarColor = Color.TRANSPARENT
 
         progressDialog = ProgressDialog(this)
         progressDialog!!.setTitle("Please Wait")
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(), MainAdapter.onSelectData {
     }
 
     private val categories: Unit
-        private get() {
+        get() {
             progressDialog!!.show()
             AndroidNetworking.get(Api.Categories)
                     .setPriority(Priority.HIGH)
@@ -124,20 +124,22 @@ class MainActivity : AppCompatActivity(), MainAdapter.onSelectData {
         searchView = findViewById(R.id.search_recipe)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                setSearchView(query)
+                setSearchView()
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                if (newText == "") {
-//                    getDefaultData()
+                when (newText) {
+                    "" -> {
+            //                    getDefaultData()
+                    }
                 }
                 return false
             }
         })
     }
 
-    private fun setSearchView(query: String) {
+    private fun setSearchView() {
             Toast.makeText(this@MainActivity, "Feature under development", Toast.LENGTH_LONG).show()
 //        if (list.contains(query)) {
 //            adapter.filter.filter(query)
