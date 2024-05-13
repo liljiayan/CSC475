@@ -46,8 +46,8 @@ class MainAdapter(
         return items.size
     }
 
-    // Class Holder
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    // Static inner class Holder
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvCategory: TextView = itemView.findViewById(R.id.tvCategory)
         val cvCategory: CardView = itemView.findViewById(R.id.cvCategory)
         val imgCategory: ImageView = itemView.findViewById(R.id.imgCategory)

@@ -48,8 +48,8 @@ class FilterFoodAdapter(
         return items.size
     }
 
-    // Class Holder
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    // Static inner class Holder
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvMeal: TextView = itemView.findViewById(R.id.tvMeal)
         val cvFilterMeal: CardView = itemView.findViewById(R.id.cvFilterMeal)
         val imgThumb: ImageView = itemView.findViewById(R.id.imgThumb)

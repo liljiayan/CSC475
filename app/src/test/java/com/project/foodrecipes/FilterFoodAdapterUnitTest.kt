@@ -1,59 +1,78 @@
 package com.project.foodrecipes
 
 import android.content.Context
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.project.foodrecipes.adapter.FilterFoodAdapter
 import com.project.foodrecipes.model.ModelFilter
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
-import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.MockitoAnnotations.initMocks
 
-@RunWith(MockitoJUnitRunner::class)
+@Suppress("DEPRECATION")
 class FilterFoodAdapterTest {
 
+    // Mocked dependencies
     @Mock
-    private lateinit var mockContext: Context
-
-    @Mock
-    private lateinit var mockViewGroup: ViewGroup
+    lateinit var mockContext: Context
 
     @Mock
-    private lateinit var mockLayoutInflater: LayoutInflater
+    lateinit var mockOnSelectData: FilterFoodAdapter.OnSelectData
 
-    @Mock
-    private lateinit var mockViewHolder: FilterFoodAdapter.ViewHolder
+    // Initialize FilterFoodAdapter
+    private lateinit var filterFoodAdapter: FilterFoodAdapter
 
-    @Mock
-    private lateinit var mockOnSelectData: FilterFoodAdapter.OnSelectData
-
-    private lateinit var adapter: FilterFoodAdapter
-
+    // Sample data for testing
     private val testData = listOf(
-        ModelFilter("1", "Test1","http://example.com/image1.jpg"),
-        ModelFilter("2", "Test2", "http://example.com/image2.jpg")
+        ModelFilter("Meal 1", "image_url_1"),
+        ModelFilter("Meal 2", "image_url_2")
     )
 
     @Before
-    fun setUp() {
-        `when`(mockContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).thenReturn(mockLayoutInflater)
-        `when`(mockLayoutInflater.inflate(R.layout.list_item_filter_food, mockViewGroup, false)).thenReturn(mock(View::class.java))
-        adapter = FilterFoodAdapter(mockContext, testData, mockOnSelectData)
+    fun setup() {
+        // Initialize mocks
+        initMocks(this)
+
+        // Initialize FilterFoodAdapter with test data
+        filterFoodAdapter = FilterFoodAdapter(mockContext, testData, mockOnSelectData)
     }
 
     @Test
-    fun testOnBindViewHolder() {
-        adapter.onBindViewHolder(mockViewHolder, 0)
+    fun getItemCount_returnsCorrectItemCount() {
+        assertEquals(testData.size, filterFoodAdapter.itemCount)
+    }
 
-        // Verify that the text is set correctly
-        verify(mockViewHolder).tvMeal.text = testData[0].strMeal
+    @Test
+    fun onBindViewHolder_setsCorrectData() {
+        // Mock views and data
+        val viewHolder = FilterFoodAdapter.ViewHolder(View(mockContext))
+        val position = 0
+        val expectedData = testData[position]
 
-        // You can add more verification for other views here if needed
+        // Perform onBind
+        filterFoodAdapter.onBindViewHolder(viewHolder, position)
+
+        // Verify that the correct data is set
+        assertEquals(expectedData.strMeal, viewHolder.tvMeal.text)
+        // You can add more assertions here for other view properties if needed
+    }
+
+    @Test
+    fun onBindViewHolder_clickListenerInvoked() {
+        // Mock views and data
+        val viewHolder = FilterFoodAdapter.ViewHolder(View(mockContext))
+        val position = 0
+        val expectedData = testData[position]
+
+        // Perform onBind
+        filterFoodAdapter.onBindViewHolder(viewHolder, position)
+
+        // Trigger click listener
+        viewHolder.cvFilterMeal.performClick()
+
+        // Verify that the onSelectData callback is invoked with the correct data
+        verify(mockOnSelectData).onSelected(expectedData)
     }
 }

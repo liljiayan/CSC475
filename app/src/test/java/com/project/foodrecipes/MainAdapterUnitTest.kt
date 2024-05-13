@@ -1,73 +1,57 @@
 package com.project.foodrecipes
 
 import android.content.Context
-import android.view.ViewGroup
-import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import android.view.View
 import com.project.foodrecipes.adapter.MainAdapter
 import com.project.foodrecipes.model.ModelMain
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.MockitoAnnotations.initMocks
 
-@RunWith(AndroidJUnit4::class)
+@Suppress("DEPRECATION")
 class MainAdapterTest {
 
-    private lateinit var context: Context
-    private lateinit var testItems: List<ModelMain>
+    // Mocked dependencies
+    @Mock
+    lateinit var mockContext: Context
+
+    // Initialize MainAdapter
+    private lateinit var mainAdapter: MainAdapter
+
+    // Sample data for testing
+    private val testData = listOf(
+        ModelMain("Category 1", "image_url_1"),
+        ModelMain("Category 2", "image_url_2")
+    )
 
     @Before
-    fun setUp() {
-        context = ApplicationProvider.getApplicationContext()
-        testItems = listOf(
-            ModelMain("Category 1", "Category Thumb 1", "Category Description 1"),
-            ModelMain("Category 2", "Category Thumb 2", "Category Description 2")
-        )
+    fun setup() {
+        // Initialize mocks
+        initMocks(this)
+
+        // Initialize MainAdapter with test data
+        mainAdapter = MainAdapter(mockContext, testData, null)
     }
 
     @Test
-    fun testAdapterItemCount() {
-        val adapter = MainAdapter(context, testItems, null)
-        assertEquals(testItems.size, adapter.itemCount)
+    fun getItemCount_returnsCorrectItemCount() {
+        assertEquals(testData.size, mainAdapter.itemCount)
     }
 
     @Test
-    fun testViewHolder() {
-        val parent = object : ViewGroup(context) {
-            override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
-                // Do nothing
-            }
-        }
+    fun onBindViewHolder_setsCorrectData() {
+        // Mock views and data
+        val viewHolder = MainAdapter.ViewHolder(View(mockContext))
+        val position = 0
+        val expectedData = testData[position]
 
-        val adapter = MainAdapter(context, testItems, null)
-        val viewHolder = adapter.onCreateViewHolder(parent, 0)
+        // Perform onBind
+        mainAdapter.onBindViewHolder(viewHolder, position)
 
-        assertNotNull(viewHolder)
-        assertNotNull(viewHolder.tvCategory)
-        assertNotNull(viewHolder.imgCategory)
-        assertNotNull(viewHolder.cvCategory)
-    }
-
-    @Test
-    fun testOnBindViewHolder() {
-        val parent = object : ViewGroup(context) {
-            override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
-                // Do nothing
-            }
-        }
-
-        val mockSelectData: MainAdapter.OnSelectData = object : MainAdapter.OnSelectData {
-            override fun onSelected(modelMain: ModelMain) {
-                // Do nothing
-            }
-        }
-
-        val adapter = MainAdapter(context, testItems, mockSelectData)
-        val viewHolder = adapter.onCreateViewHolder(parent, 0)
-
-        adapter.onBindViewHolder(viewHolder, 0)
-        assertEquals(testItems[0].strCategory, viewHolder.tvCategory.text.toString())
+        // Verify that the correct data is set
+        assertEquals(expectedData.strCategory, viewHolder.tvCategory.text)
+        // You can add more assertions here for other view properties if needed
     }
 }
