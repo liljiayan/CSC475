@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "636151091778",
+    "project_id": "food-recipes-e2135",
+    "storage_bucket": "food-recipes-e2135.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636151091778:android:f3e852f15535cb56a213db",
+        "android_client_info": {
+          "package_name": "com.liljiayan.foodrecipes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGvCurg0zBjYb1pZm_cZ9T4PDsqvReHFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
