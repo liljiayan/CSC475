@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconDuplicates">
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/drawable-xxxhdpi/ic_notif.png" />
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/drawable-xxxhdpi/ic_profile.png" />
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/drawable-xxxhdpi/shadow_white.png" />
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/mipmap-hdpi/ic_launcher.png" />
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" />
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/mipmap-mdpi/ic_launcher.png" />
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" />
+    </issue>
+    <issue id="IconLauncherShape">
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/drawable-xxxhdpi/ic_recipe_book.png" />
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/drawable-xxxhdpi/ic_recipe_book.png" />
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/drawable-xxxhdpi/ic_recipe_book.png" />
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/drawable-xxxhdpi/ic_recipe_book.png" />
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/drawable-xxxhdpi/ic_recipe_book.png" />
+    </issue>
+    <issue id="IconXmlAndPng">
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/drawable-hdpi/ic_back.png" />
+        <ignore path="/Users/lily/AndroidStudioProjects/FoodRecipes/app/src/main/res/drawable-xxhdpi/ic_back.png" />
+    </issue>
+</lint>
