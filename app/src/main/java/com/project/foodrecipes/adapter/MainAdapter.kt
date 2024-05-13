@@ -1,82 +1,55 @@
-package com.project.foodrecipes.adapter;
+package com.project.foodrecipes.adapter
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.project.foodrecipes.R
+import com.project.foodrecipes.model.ModelMain
 
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
+class MainAdapter(
+    private val mContext: Context,
+    private val items: List<ModelMain>,
+    private val onSelectData: OnSelectData
+) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.project.foodrecipes.R;
-import com.project.foodrecipes.model.ModelMain;
-
-import java.util.List;
-
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
-
-    private List<ModelMain> items;
-    private MainAdapter.onSelectData onSelectData;
-    private Context mContext;
-
-    public interface onSelectData {
-        void onSelected(ModelMain modelMain);
+    interface OnSelectData {
+        fun onSelected(modelMain: ModelMain)
     }
 
-    public MainAdapter(Context context, List<ModelMain> items, MainAdapter.onSelectData xSelectData) {
-        this.mContext = context;
-        this.items = items;
-        this.onSelectData = xSelectData;
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.list_item_categories, parent, false)
+        return ViewHolder(v)
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_categories, parent, false);
-        return new ViewHolder(v);
-    }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val data = items[position]
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        final ModelMain data = items.get(position);
-
-        //Get Image
+        // Get Image
         Glide.with(mContext)
-                .load(data.strCategoryThumb)
-                .placeholder(R.drawable.ic_food_placeholder)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.imgCategory);
+            .load(data.strCategoryThumb)
+            .placeholder(R.drawable.ic_food_placeholder)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .into(holder.imgCategory)
 
-        holder.tvCategory.setText(data.strCategory);
-        holder.cvCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onSelectData.onSelected(data);
-            }
-        });
+        holder.tvCategory.text = data.strCategory
+        holder.cvCategory.setOnClickListener { onSelectData.onSelected(data) }
     }
 
-    @Override
-    public int getItemCount() {
-        return items.size();
+    override fun getItemCount(): Int {
+        return items.size
     }
 
-    //Class Holder
-    class ViewHolder extends RecyclerView.ViewHolder {
-
-        public TextView tvCategory;
-        public CardView cvCategory;
-        public ImageView imgCategory;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            cvCategory = itemView.findViewById(R.id.cvCategory);
-            tvCategory = itemView.findViewById(R.id.tvCategory);
-            imgCategory = itemView.findViewById(R.id.imgCategory);
-        }
+    // Class Holder
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvCategory: TextView = itemView.findViewById(R.id.tvCategory)
+        val cvCategory: CardView = itemView.findViewById(R.id.cvCategory)
+        val imgCategory: ImageView = itemView.findViewById(R.id.imgCategory)
     }
-
 }

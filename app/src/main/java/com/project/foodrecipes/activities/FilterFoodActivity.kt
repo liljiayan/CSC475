@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.project.foodrecipes.activities
 
 import android.app.Activity
@@ -29,14 +31,14 @@ import org.json.JSONObject
 import java.util.*
 
 @Suppress("DEPRECATION")
-class FilterFoodActivity : AppCompatActivity(), FilterFoodAdapter.onSelectData {
+class FilterFoodActivity : AppCompatActivity(), FilterFoodAdapter.OnSelectData {
 
-    var filterFoodAdapter: FilterFoodAdapter? = null
+    private var filterFoodAdapter: FilterFoodAdapter? = null
     var progressDialog: ProgressDialog? = null
     var modelFilter: MutableList<ModelFilter> = ArrayList()
-    var modelMain: ModelMain? = null
+    private var modelMain: ModelMain? = null
     var strCategory: String? = null
-    var strCategoryDescription: String? = null
+    private var strCategoryDescription: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,10 +49,8 @@ class FilterFoodActivity : AppCompatActivity(), FilterFoodAdapter.onSelectData {
                     or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
         }
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
-            window.statusBarColor = Color.TRANSPARENT
-        }
+        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
+        window.statusBarColor = Color.TRANSPARENT
 
         toolbar_filter.setTitle(null)
         setSupportActionBar(toolbar_filter)
@@ -72,8 +72,8 @@ class FilterFoodActivity : AppCompatActivity(), FilterFoodAdapter.onSelectData {
             strCategoryDescription = modelMain!!.strCategoryDescription
 
             //Set text
-            tvTitle.setText("Food List $strCategory")
-            tvDescCategories.setText(strCategoryDescription)
+            "Food List $strCategory".also { tvTitle.text = it }
+            tvDescCategories.text = strCategoryDescription
 
             //Get image background
             Glide.with(this)
@@ -95,7 +95,7 @@ class FilterFoodActivity : AppCompatActivity(), FilterFoodAdapter.onSelectData {
     }
 
     private val meal: Unit
-        private get() {
+        get() {
             progressDialog!!.show()
             AndroidNetworking.get(Api.Filter)
                     .addPathParameter("strCategory", strCategory)

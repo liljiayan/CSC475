@@ -1,81 +1,58 @@
-package com.project.foodrecipes.adapter;
+package com.project.foodrecipes.adapter
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.project.foodrecipes.R
+import com.project.foodrecipes.model.ModelFilter
 
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
+class FilterFoodAdapter(
+    private val mContext: Context,
+    private val items: List<ModelFilter>,
+    private val onSelectData: OnSelectData
+) : RecyclerView.Adapter<FilterFoodAdapter.ViewHolder>() {
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.project.foodrecipes.R;
-import com.project.foodrecipes.model.ModelFilter;
-
-import java.util.List;
-
-public class FilterFoodAdapter extends RecyclerView.Adapter<FilterFoodAdapter.ViewHolder> {
-
-    private List<ModelFilter> items;
-    private FilterFoodAdapter.onSelectData onSelectData;
-    private Context mContext;
-
-    public interface onSelectData {
-        void onSelected(ModelFilter modelMain);
+    interface OnSelectData {
+        fun onSelected(modelMain: ModelFilter)
     }
 
-    public FilterFoodAdapter(Context context, List<ModelFilter> items, FilterFoodAdapter.onSelectData xSelectData) {
-        this.mContext = context;
-        this.items = items;
-        this.onSelectData = xSelectData;
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.list_item_filter_food, parent, false)
+        return ViewHolder(v)
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_filter_food, parent, false);
-        return new ViewHolder(v);
-    }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val data = items[position]
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        final ModelFilter data = items.get(position);
-
-        //Get Image
+        // Get Image
         Glide.with(mContext)
-                .load(data.strMealThumb)
-                .placeholder(R.drawable.ic_food_placeholder)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.imgThumb);
+            .load(data.strMealThumb)
+            .placeholder(R.drawable.ic_food_placeholder)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .into(holder.imgThumb)
 
-        holder.tvMeal.setText(data.strMeal);
-        holder.cvFilterMeal.setOnClickListener(v -> onSelectData.onSelected(data));
-        holder.imgFavorite.setOnClickListener(v -> {
-            Toast.makeText(mContext, "Feature under development", Toast.LENGTH_SHORT).show();
-        });
+        holder.tvMeal.text = data.strMeal
+        holder.cvFilterMeal.setOnClickListener { onSelectData.onSelected(data) }
+        holder.imgFavorite.setOnClickListener { Toast.makeText(mContext, "Feature under development", Toast.LENGTH_SHORT).show() }
     }
 
-    @Override
-    public int getItemCount() {
-        return items.size();
+    override fun getItemCount(): Int {
+        return items.size
     }
 
-    //Class Holder
-    class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvMeal;
-        public CardView cvFilterMeal;
-        public ImageView imgThumb, imgFavorite;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            cvFilterMeal = itemView.findViewById(R.id.cvFilterMeal);
-            tvMeal       = itemView.findViewById(R.id.tvMeal);
-            imgThumb     = itemView.findViewById(R.id.imgThumb);
-            imgFavorite  = itemView.findViewById(R.id.imgFavorite);
-        }
+    // Class Holder
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvMeal: TextView = itemView.findViewById(R.id.tvMeal)
+        val cvFilterMeal: CardView = itemView.findViewById(R.id.cvFilterMeal)
+        val imgThumb: ImageView = itemView.findViewById(R.id.imgThumb)
+        val imgFavorite: ImageView = itemView.findViewById(R.id.imgFavorite)
     }
-
 }
