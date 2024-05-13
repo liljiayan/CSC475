@@ -7,7 +7,7 @@
     android:background="@android:color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:ignore="VisualLintTextFieldSize">
+    tools:ignore="Overdraw,VisualLintTextFieldSize">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
